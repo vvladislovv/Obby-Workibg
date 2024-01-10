@@ -35,37 +35,35 @@ magazine.FrameGlobule.Frame.CloseFrame.Close.MouseButton1Click:Connect(function(
 end)
 
 task.spawn(function()
-
-
 	magazine.FrameGlobule.Frame.FrameProduct.ProductOne.Frame.FrameButton.TextButton.MouseButton1Click:Connect(function()
-		local Cost = tostring(magazine.FrameGlobule.Frame.FrameProduct.ProductOne.Frame.CostFrame.TextLabel)
+		local Cost = tonumber(magazine.FrameGlobule.Frame.FrameProduct.ProductOne.Frame.CostFrame.TextLabel.Text)
 		local IndexProduct = 1
 		Remote.BuyShop:FireServer(Cost, IndexProduct)
-		print('1')
+		
 	end)
 	magazine.FrameGlobule.Frame.FrameProduct.ProductTwo.Frame.FrameButton.TextButton.MouseButton1Click:Connect(function()
-		local Cost = tostring(magazine.FrameGlobule.Frame.FrameProduct.ProductTwo.Frame.CostFrame.TextLabel)
+		local Cost = tonumber(magazine.FrameGlobule.Frame.FrameProduct.ProductTwo.Frame.CostFrame.TextLabel.Text)
 		local IndexProduct = 2
 		Remote.BuyShop:FireServer(Cost, IndexProduct)
-		print('2')
+		
 	end)
 	magazine.FrameGlobule.Frame.FrameProduct.ProductThree.Frame.FrameButton.TextButton.MouseButton1Click:Connect(function()
-		local Cost = tostring(magazine.FrameGlobule.Frame.FrameProduct.ProductThree.Frame.CostFrame.TextLabel)
+		local Cost = tonumber(magazine.FrameGlobule.Frame.FrameProduct.ProductThree.Frame.CostFrame.TextLabel.Text)
 		local IndexProduct = 3
 		Remote.BuyShop:FireServer(Cost, IndexProduct)
-		print('3')
+		
 	end)
 	magazine.FrameGlobule.Frame.FrameProduct.ProductFour.Frame.FrameButton.TextButton.MouseButton1Click:Connect(function()
-		local Cost = tostring(magazine.FrameGlobule.Frame.FrameProduct.ProductFour.Frame.CostFrame.TextLabel)
+		local Cost = tonumber(magazine.FrameGlobule.Frame.FrameProduct.ProductFour.Frame.CostFrame.TextLabel.Text)
 		local IndexProduct = 4
 		Remote.BuyShop:FireServer(Cost, IndexProduct)
-		print('4')
+		
 	end)
 	magazine.FrameGlobule.Frame.FrameProduct.ProductFive.Frame.FrameButton.TextButton.MouseButton1Click:Connect(function()
-		local Cost = tostring(magazine.FrameGlobule.Frame.FrameProduct.ProductFive.Frame.CostFrame.TextLabel)
+		local Cost = tonumber(magazine.FrameGlobule.Frame.FrameProduct.ProductFive.Frame.CostFrame.TextLabel.Text)
 		local IndexProduct = 5
 		Remote.BuyShop:FireServer(Cost, IndexProduct)
-		print('4')
+		
 	end)
 end)
 

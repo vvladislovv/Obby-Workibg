@@ -1,7 +1,7 @@
 local AdminCommand = {}
 
 local Data = require(script.Parent.DataStore)
-local Full_checkPoint = 52
+local Full_checkPoint = 9
 
 local AdminTable = {
     ['vlad060108'] = true,
