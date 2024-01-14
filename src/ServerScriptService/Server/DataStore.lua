@@ -17,6 +17,10 @@ function Data.new(Player)
 		Checkpoint = 0,
 		Present = 0
 	}
+
+	PData.Equipment = {
+		Boot = ""
+	}
 	function PData:Update(key, value)
 		PData[key] = value
 		Remotes.ClientDataUpdate:FireClient(Player,key,value)
@@ -36,8 +40,8 @@ end
 
 local AutoSaves = {}
 
-local MainKey = 'DataMainServerWtfs11ss'
-local ClientKey = 'DataMainClientWtfs11ss'
+local MainKey = 'DataMainServerAlifa123'
+local ClientKey = 'DataMainClientAlifa123'
 
 local DataStore2 = require(game.ServerScriptService.DataStore2)
 
@@ -60,6 +64,10 @@ function GetDataFromDataStorage(Client, DataStorage)
 	
 	for i,v in pairs(DataStorage.BaseSettings) do
 		PData.BaseSettings[i] = DataStorage.BaseSettings[i]
+	end
+
+	for i,v in pairs(DataStorage.Equipment) do
+		PData.Equipment[i] = DataStorage.Equipment[i]
 	end
 	return PData
 end

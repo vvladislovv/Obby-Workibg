@@ -1,7 +1,12 @@
 local Remote = game:GetService('ReplicatedStorage'):WaitForChild('Remote')
-local Player = game:GetService('Players')
 local Data = require(game.ServerScriptService.Server.DataStore)
 local FreeFolderItems = game.ServerStorage.FreeFolderItems
+local ServerStorage = game:GetService('ServerStorage')
+local ChristmasShoes = ServerStorage.FreeFolderItems['Christmas Shoes']
+
+local LShoes = ChristmasShoes['Christmas Shoes Left']:Clone()
+local RShoes = ChristmasShoes['Christmas Shoes Right']:Clone()
+
 local FinisTable = {
 	['OneItems'] = false,
 	['TwoItems'] = false,
@@ -26,7 +31,6 @@ local ShopServer = {}
 
 Remote.BuyShop.OnServerEvent:Connect(function(plr, Cost, IndexProduct)
 	local PData = Data:Get(plr)
-
 	if IndexProduct == 1 then
 		if PData.BaseSettings.Present >= Cost then
 			if FinisTable['OneItems'] == false then
@@ -53,15 +57,14 @@ Remote.BuyShop.OnServerEvent:Connect(function(plr, Cost, IndexProduct)
 		if PData.BaseSettings.Present >= Cost then
 			if FinisTable['TwoItems'] == false then
 				FinisTable['TwoItems'] = true
-				print(FinisTable)
+				local Cookes = require(game:GetService('ReplicatedStorage').Module.ItemsModule.CookiesEffect)
 				PData.BaseSettings.Present -= Cost
 				PData:Update('BaseSettings', PData.BaseSettings) -- Если хватает на вещь, тогда делает минус с даты
 				local CookesM = FreeFolderItems["Cookes"]
+					local Key = CookesM:Clone()
 					if plr.Backpack:FindFirstChild(CookesM.Name) or plr.Character:FindFirstChild(CookesM.Name) then
-						--HasteM:StarModule()
 						return
 					else
-						local Key = CookesM:Clone()
 						Key.Parent = plr.Backpack
 						--HasteM:StarModule()
 					end
@@ -75,16 +78,14 @@ Remote.BuyShop.OnServerEvent:Connect(function(plr, Cost, IndexProduct)
 		if PData.BaseSettings.Present >= Cost then
 			if FinisTable['ThreeItems'] == false then
 				FinisTable['ThreeItems'] = true
-				print(FinisTable)
 				PData.BaseSettings.Present -= Cost
 				PData:Update('BaseSettings', PData.BaseSettings) -- Если хватает на вещь, тогда делает минус с даты
 				local SwordM = FreeFolderItems["Ice Sword"]
 					if plr.Backpack:FindFirstChild(SwordM.Name) or plr.Character:FindFirstChild(SwordM.Name) then
-						--HasteM:StarModule()
 						return
 					else
-						local Key = SwordM:Clone()
-						Key.Parent = plr.Backpack
+						local Ice = SwordM:Clone()
+						Ice.Parent = plr.Backpack
 						--HasteM:StarModule()
 					end
 				end
@@ -115,21 +116,27 @@ Remote.BuyShop.OnServerEvent:Connect(function(plr, Cost, IndexProduct)
 		end
 	end
 
-	if IndexProduct == 5 then -- надо посмотреть как это сделать
-		if PData.BaseSettings.Present >= Cost then
+	if IndexProduct == 5 then -- Boots
+		if PData.BaseSettings.Present >= Cost and PData.Equipment.Boot == '' then
 			if FinisTable['FiveItems'] == false then
 				FinisTable['FiveItems'] = true
 				print(FinisTable)
 				PData.BaseSettings.Present -= Cost
-				PData:Update('BaseSettings', PData.BaseSettings) -- Если хватает на вещь, тогда делает минус с даты
+				PData.Equipment.Boot = 'Christmas Shoes'
+				PData:Update('BaseSettings', PData.BaseSettings)
+				PData:Update('Equipment', PData.Equipment) -- Если хватает на вещь, тогда делает минус с даты
 				local ChristmasM = FreeFolderItems["Christmas Shoes"]
-					if plr.Backpack:FindFirstChild(ChristmasM.Name) or plr.Character:FindFirstChild(ChristmasM.Name) then
-						--HasteM:StarModule()
-						return
-					else
-						local Key = ChristmasM:Clone()
-						Key.Parent = plr.Backpack
-						--HasteM:StarModule()
+				local Christmas = require(game.ReplicatedStorage.Module.ItemsModule.Christmas)
+				while true do task.wait()
+					if plr.Character then break end
+				end
+					local hum = plr.Character:WaitForChild('Humanoid')
+					print(hum)
+					task.wait()
+					if plr.Character:FindFirstChild('Humanoid') then
+						Christmas:PLayerSpeed(hum)
+						hum:AddAccessory(LShoes)
+						hum:AddAccessory(RShoes)
 					end
 				end
 		else
