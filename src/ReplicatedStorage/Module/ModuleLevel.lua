@@ -28,7 +28,6 @@ end
 function OneLevelSpeed()
     local Speed = 150
     local RunLevel = game.Workspace:FindFirstChild('OneLevel')
-
     for	_, index in next, RunLevel:GetChildren() do
         while true do
             index.Velocity = index.CFrame.LookVector*Speed
@@ -36,7 +35,7 @@ function OneLevelSpeed()
             break
         end
         index.Touched:Connect(function(hit)
-            local Hum = hit.Parent:WaitForChild('Humanoid')
+            local Hum = hit.Parent:FindFirstChild('Humanoid')
             if Hum then
                 Hum.WalkSpeed = 100
             end
@@ -48,14 +47,14 @@ function OneLevelSpeed()
         end)
 
         game.Workspace.StopOneLevel.StopSpeed.Touched:Connect(function(hit)
-            local Hum = hit.Parent:WaitForChild('Humanoid')
+            local Hum = hit.Parent:FindFirstChild('Humanoid')
             if Hum then
                 Hum.WalkSpeed = 20
             end
         end)
 
         game.Workspace.StopOneLevel.BlockOneLevel.Touched:Connect(function(hit)
-            local Hum = hit.Parent:WaitForChild('Humanoid')
+            local Hum = hit.Parent:FindFirstChild('Humanoid')
             if Hum then
                 Hum.WalkSpeed = 20
             end
@@ -259,10 +258,10 @@ function DonatDoor()
     DonatFolder.Loked.ClickDetector.MouseClick:Connect(function()
         if MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
             TW:Create(DonatFolder, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Transparency = 0.6, Color = Color3.fromRGB(89, 255, 12), CanCollide = false}):Play()
-            print('Open door')
+           -- print('Open door')
         else
             MS:PromptGamePassPurchase(Player, ProductID)
-            print('no')
+           -- print('no')
         end
     end)
 
@@ -288,15 +287,19 @@ function nextLevelDonat()
 	local Remote = game:GetService('ReplicatedStorage'):WaitForChild('Remote')
 	
     for _, indexDonat in next, NextLevelDonat:GetChildren()do
-        indexDonat.Touched:Connect(function()
-            if MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
-                NextLevel = true
-                --TW:Create(DonatFolder, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Transparency = 0.6, Color = Color3.fromRGB(89, 255, 12), CanCollide = false}):Play()
-                Remote.NextCheckPoint:FireServer(NextLevel)
-            else
-                NextLevel = false
-                MS:PromptGamePassPurchase(Player, ProductID)
-            end
+        indexDonat.Touched:Connect(function(hit)
+            print(hit.Parent)
+            print(Player.Character)
+            if hit.Parent == Player.Character then
+                if not MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
+                    NextLevel = true
+                    --TW:Create(DonatFolder, TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {Transparency = 0.6, Color = Color3.fromRGB(89, 255, 12), CanCollide = false}):Play()
+                    Remote.NextCheckPoint:FireServer(NextLevel)
+                else
+                    NextLevel = false
+                    MS:PromptGamePassPurchase(Player, ProductID)
+                end
+            end 
         end) 
     end
 end
@@ -310,13 +313,19 @@ function LevelDonatPass()
     local Player = game.Players.LocalPlayer
 
     --for _, IndexPass in next, DonatFolder:GetChildren() do
-    DonatFolderPass.Touched:Connect(function(plr)
-        if MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
-            ProductUsers = true
-            Remote.DonatCheck:FireServer(ProductUsers)
-        else
-            ProductUsers = false
-            MS:PromptGamePassPurchase(Player, ProductID)
+    DonatFolderPass.Touched:Connect(function(hit)
+        print(hit.Parent)
+            print(Player.Character)
+        if hit.Parent == Player.Character then
+            if MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
+                -- print('asasdfasd')
+                 ProductUsers = true
+                 Remote.DonatCheck:FireServer(ProductUsers)
+             else
+                -- print('ffff')
+                 ProductUsers = false
+                 MS:PromptGamePassPurchase(Player, ProductID)
+             end 
         end
     end)
 end

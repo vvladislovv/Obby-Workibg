@@ -1,6 +1,6 @@
 local PresentLeaderstats = {}
 local DSS = game:GetService("DataStoreService")
-local dataStore = DSS:GetOrderedDataStore("DataStoreAlifaa45") --// "DataStore1" - это название хранилища, можете поставить своё
+local dataStore = DSS:GetOrderedDataStore("DataStoreAlifaa15") --// "DataStore1" - это название хранилища, можете поставить своё
 local DataS = require(game.ServerScriptService.Server.DataStore)
 
 local BlackList = {
@@ -62,6 +62,6 @@ while true do
 	updateBoard()
 	--print("Updated")
 	
-	task.wait(10) --// В скобках: Кол-во секунд между обнавлениями доски
+	task.wait(5) --// В скобках: Кол-во секунд между обнавлениями доски
 end
 return PresentLeaderstats

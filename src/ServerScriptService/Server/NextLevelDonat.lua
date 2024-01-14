@@ -7,6 +7,7 @@ local RemoteNext = false
 local NextLevelDonat 
 local NextLevel = {}
 local finsh = 0
+local ProductID = 682049099
 -- Дописать телеаорт на следующию локациию 
 
 
@@ -22,9 +23,13 @@ Remote.NextCheckPoint.OnServerEvent:Connect(function(plr, NextLevel)
         local PDataPosition = tostring(PData.BaseSettings.Checkpoint)
         print(PDataPosition)
 		for _, v in next, checkpoints:GetChildren() do
-			if v.Name == PDataPosition then
-				plr.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position)
-			end
+            if MS:UserOwnsGamePassAsync(plr.UserId, ProductID) then
+                if v.Name == PDataPosition then
+                    plr.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position)
+                end
+            else
+                print('fff')
+            end
         end
     end
 end)
