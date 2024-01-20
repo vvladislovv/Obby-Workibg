@@ -21,15 +21,16 @@ Remote.NextCheckPoint.OnServerEvent:Connect(function(plr, NextLevel)
         task.wait(5)
         finsh = 0
         local PDataPosition = tostring(PData.BaseSettings.Checkpoint)
-        print(PDataPosition)
-		for _, v in next, checkpoints:GetChildren() do
-            if MS:UserOwnsGamePassAsync(plr.UserId, ProductID) then
-                if v.Name == PDataPosition then
-                    plr.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position)
+        if plr then
+            for _, v in next, checkpoints:GetChildren() do
+                if MS:UserOwnsGamePassAsync(plr.UserId, ProductID) then
+                    if v.Name == PDataPosition then
+                        plr.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position)
+                    end
+                else
+                    print('fff')
                 end
-            else
-                print('fff')
-            end
+            end 
         end
     end
 end)

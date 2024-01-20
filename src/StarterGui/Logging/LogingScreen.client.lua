@@ -28,9 +28,9 @@ function GuiStart()
 		TextTeleporting.Text = "Teleporting..."
 		task.wait(CouldTime)
 		Stoper += 1
-	until Stoper == 3
+	until Stoper == 5
 	
-	if  Stoper == 3 then
+	if  Stoper == 5 then
 		Teleporting.Visible = false
 		TextTeleporting.Visible = false
 		Text()

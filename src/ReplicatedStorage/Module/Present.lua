@@ -7,7 +7,7 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 local PresentValue = false
 --local humanoid = character:WaitForChild("Humanoid")
-
+ 
 local PRESS = 1
 
 local RS = game:GetService('ReplicatedStorage')
@@ -17,6 +17,16 @@ local CoulDown = 25
 task.spawn(function()
 		task.wait()
 		for _, open in next, PresentF:GetChildren() do
+		task.spawn(function()
+			while true do
+				task.wait()
+				TS:Create(open, TweenInfo.new(8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Orientation = Vector3.new(0,-360,0), Position = Vector3.new(open.Position.X,open.Position.Y+4,open.Position.Z)}):Play()
+				task.wait(3)
+				TS:Create(open, TweenInfo.new(8, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Orientation = Vector3.new(0,-360,0), Position = Vector3.new(open.Position.X,open.Position.Y-4,open.Position.Z)}):Play()
+				task.wait(3)
+			end
+		end)
+
 			open.Touched:Connect(function(hit)
 				if hit.Parent == player.character and PresentValue == false then
 					TS:Create(open, TweenInfo.new(2, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {Size = Vector3.new(0,0,0)}):Play()

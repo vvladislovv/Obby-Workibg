@@ -26,7 +26,7 @@ function FlyPart()
 end
 
 function OneLevelSpeed()
-    local Speed = 150
+    local Speed = 15
     local RunLevel = game.Workspace:FindFirstChild('OneLevel')
     for	_, index in next, RunLevel:GetChildren() do
         while true do
@@ -285,11 +285,10 @@ function nextLevelDonat()
 	local Player = game.Players.LocalPlayer
     local NextLevel = false
 	local Remote = game:GetService('ReplicatedStorage'):WaitForChild('Remote')
-	
+	 
     for _, indexDonat in next, NextLevelDonat:GetChildren()do
         indexDonat.Touched:Connect(function(hit)
-            print(hit.Parent)
-            print(Player.Character)
+            print(Player.UserId)
             if hit.Parent == Player.Character then
                 if not MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
                     NextLevel = true

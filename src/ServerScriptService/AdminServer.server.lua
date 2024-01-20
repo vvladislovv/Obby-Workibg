@@ -93,16 +93,22 @@ re.OnServerEvent:Connect(function(plr, instruction, value, targetId)
 				end)
 			elseif instruction == "Present" then
 				print(value)
-				local PData = Data:Get(plr)
-				PData.BaseSettings.Present = value
-				PData:Update('BaseSettings', PData.BaseSettings)
+				local tt = tonumber(targetId)
+				if tt == plr.UserId then
+					local PData = Data:Get(plr)
+					PData.BaseSettings.Present = value
+					PData:Update('BaseSettings', PData.BaseSettings)
+					print(value)
+				end
+			elseif instruction == "Checkpoint"  then
 				print(value)
-			elseif instruction == "Checkpoint" then
-				print(value)
-				local PData = Data:Get(plr)
-				PData.BaseSettings.Checkpoint = value
-				PData:Update('BaseSettings', PData.BaseSettings)
-				print(value)
+				local tt = tonumber(targetId)
+				if tt == plr.UserId then
+					local PData = Data:Get(plr)
+					PData.BaseSettings.Checkpoint = value
+					PData:Update('BaseSettings', PData.BaseSettings)
+					print(value)
+				end
 			elseif instruction == "BAN" and tonumber(value[1]) then
 				local banStart = os.time()
 				local banEnd = banStart + tonumber(value[1])

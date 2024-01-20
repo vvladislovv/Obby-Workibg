@@ -1,5 +1,6 @@
 local RS = game:GetService('ReplicatedStorage')
 local Ms = RS:WaitForChild('Module')
+local GrassEffect = require(Ms.GrassEffect)
 local TeleportModule = require(Ms.TeleportLocation)
 --local Magazine = require(Ms.Magazine)
 local ModuleLevel = require(Ms.ModuleLevel):StartLevel()
