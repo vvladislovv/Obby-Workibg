@@ -26,7 +26,7 @@ function FlyPart()
 end
 
 function OneLevelSpeed()
-    local Speed = 15
+    local Speed = 5
     local RunLevel = game.Workspace:FindFirstChild('OneLevel')
     for	_, index in next, RunLevel:GetChildren() do
         while true do

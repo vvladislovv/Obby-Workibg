@@ -7,7 +7,6 @@ local Developer = {
 	2213170051 -- bread
 }
 local TesterGame = {
-	542308818, -- Darkness
 	2442551394, -- Kappo
 	1519078227, -- bvdev
 	795007271, -- KornKorn228
