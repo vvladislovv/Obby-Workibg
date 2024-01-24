@@ -46,6 +46,13 @@ function OneLevelSpeed()
             end
         end)
 
+        game.Workspace.OneLevel.Part.Touched:Connect(function(hit)
+            local Hum = hit.Parent:FindFirstChild('Humanoid')
+            if Hum then
+                Hum.WalkSpeed = 100
+            end
+        end)
+
         game.Workspace.StopOneLevel.StopSpeed.Touched:Connect(function(hit)
             local Hum = hit.Parent:FindFirstChild('Humanoid')
             if Hum then
@@ -288,7 +295,7 @@ function nextLevelDonat()
 	 
     for _, indexDonat in next, NextLevelDonat:GetChildren()do
         indexDonat.Touched:Connect(function(hit)
-            print(Player.UserId)
+           -- print(Player.UserId)
             if hit.Parent == Player.Character then
                 if not MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
                     NextLevel = true
@@ -313,8 +320,8 @@ function LevelDonatPass()
 
     --for _, IndexPass in next, DonatFolder:GetChildren() do
     DonatFolderPass.Touched:Connect(function(hit)
-        print(hit.Parent)
-            print(Player.Character)
+        --print(hit.Parent)
+            --print(Player.Character)
         if hit.Parent == Player.Character then
             if MS:UserOwnsGamePassAsync(Player.UserId, ProductID) then
                 -- print('asasdfasd')

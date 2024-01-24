@@ -27,21 +27,21 @@ task.spawn(function()
 			end
 		end)
 
-			open.Touched:Connect(function(hit)
-				if hit.Parent == player.character and PresentValue == false then
-					TS:Create(open, TweenInfo.new(2, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {Size = Vector3.new(0,0,0)}):Play()
-					PresentValue = true
-					--print(hit)
-					Remote.Touched:FireServer(PresentValue,open)
-					open.CanTouch = false
-					task.wait(0.3)
-					PresentValue = false
-					task.wait(CoulDown)
-					TS:Create(open, TweenInfo.new(2, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out), {Size = Vector3.new(4.954, 6.755, 5.051)}):Play()
-					open.CanTouch = true
-				end
-			end)
-		end
+		open.Touched:Connect(function(hit)
+			if hit.Parent == player.character and PresentValue == false then
+				TS:Create(open, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = Vector3.new(0,0,0)}):Play()
+				PresentValue = true
+				--print(hit)
+				Remote.Touched:FireServer(PresentValue,open)
+				open.CanTouch = false
+				task.wait(0.3)
+				PresentValue = false
+				task.wait(CoulDown)
+				TS:Create(open, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = Vector3.new(4.954, 6.755, 5.051)}):Play()
+				open.CanTouch = true
+			end
+		end)
+	end
 end)
 
 

@@ -4,8 +4,8 @@ local dataStore = DSS:GetOrderedDataStore("DataStoreAlifaa15") --// "DataStore1"
 local DataS = require(game.ServerScriptService.Server.DataStore)
 
 local BlackList = {
-	['vlad060108'] = false,
-	['BreadDev'] = false
+	['vlad060108'] = true,
+	['BreadDev'] = true
 }
 
 local function updateBoard()

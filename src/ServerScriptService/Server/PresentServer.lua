@@ -14,27 +14,27 @@ Remote.Touched.OnServerEvent:Connect(function(plr, PresentValue,openPresent)-- Ñ
 	local PData = Data:Get(plr)
 	if PresentValue == true then
 		if openPresent.Name == 'Union1' then
-			PData.BaseSettings.Present += 1
-			PData:Update('BaseSettings', PData.BaseSettings)
-			PresentValue = false
-		end
-		if openPresent.Name == 'Union2' then
 			PData.BaseSettings.Present += 3
 			PData:Update('BaseSettings', PData.BaseSettings)
 			PresentValue = false
 		end
-		if openPresent.Name == 'Union3' then
+		if openPresent.Name == 'Union2' then
 			PData.BaseSettings.Present += 5
 			PData:Update('BaseSettings', PData.BaseSettings)
 			PresentValue = false
 		end
-		if openPresent.Name == 'Union4' then
+		if openPresent.Name == 'Union3' then
 			PData.BaseSettings.Present += 10
 			PData:Update('BaseSettings', PData.BaseSettings)
 			PresentValue = false
 		end
-		if openPresent.Name == 'Union5' then
+		if openPresent.Name == 'Union4' then
 			PData.BaseSettings.Present += 15
+			PData:Update('BaseSettings', PData.BaseSettings)
+			PresentValue = false
+		end
+		if openPresent.Name == 'Union5' then
+			PData.BaseSettings.Present += 25
 			PData:Update('BaseSettings', PData.BaseSettings)
 			PresentValue = false
 		end
