@@ -1,6 +1,6 @@
 local PresentLeaderstats = {}
 local DSS = game:GetService("DataStoreService")
-local dataStore = DSS:GetOrderedDataStore("DataStoreAlifaa15") --// "DataStore1" - это название хранилища, можете поставить своё
+local dataStore = DSS:GetOrderedDataStore("DataStoreAlifaa154") --// "DataStore1" - это название хранилища, можете поставить своё
 local DataS = require(game.ServerScriptService.Server.DataStore)
 
 local BlackList = {
