@@ -344,17 +344,6 @@ function SharpRotate()
     end
 end
 
-function AnimCoids()
-    local CouldsAnim = game.Workspace:WaitForChild('CouldsAnim')
-
-    local Could1 = CouldsAnim:WaitForChild('Cloud1')
-    local Could2 = CouldsAnim:WaitForChild('Cloud2')
-
-    TW:Create(Could1, TweenInfo.new(15, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, true), {Position = Vector3.new(211.203, 542.197, -533.392)}):Play()
-    TW:Create(Could2, TweenInfo.new(15, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1, true), {Position = Vector3.new(267.366, 547.46, -578.266)}):Play()
-
-end
-
 function VenterRotate()
     local Model = workspace:WaitForChild('Venter')
 
@@ -401,7 +390,6 @@ function ModuleLevel:StartLevel()
     LevelDonatPass()
     nextLevelDonat()
     SharpRotate()
-    AnimCoids()
     VenterRotate()
     FlyPlatform()
     print('Start Full Program')

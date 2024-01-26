@@ -1,7 +1,7 @@
 local AdminCommand = {}
 
 local Data = require(script.Parent.DataStore)
-local Full_checkPoint = 54
+local Full_checkPoint = 17
 local BootName = 'Christmas Shoes'
 
 local AdminTable = {
@@ -12,8 +12,8 @@ local AdminTable = {
     },
     
     TesterGame = {
-        ['KornKorn228'] = true,
-        ['Brings_Darkness'] = true,
+        ['KornKorn228'] = false,
+        ['Brings_Darkness'] = false,
         ['NoobPuplu'] = true,
         ['Kubusthomas'] = true,
         ['StepanVIP123'] = true,
@@ -30,13 +30,18 @@ game.Players.PlayerAdded:Connect(function(player)
         until PData.Loaded
     end
     if AdminTable.DeveloperGame[player.Name] then
-        PData.BaseSettings.Present = 100000
+        if PData.BaseSettings.Present >= 100000 then
+            PData.BaseSettings.Present = PData.BaseSettings.Present
+        end
         PData.BaseSettings.Checkpoint = Full_checkPoint
         PData.Equipment.Boot = BootName
         PData:Update('BaseSettings', PData.BaseSettings)
         PData:Update('Equipment', PData.Equipment)
     elseif AdminTable.TesterGame[player.Name] then
-        PData.Equipment.Boot = BootName
+        if PData.BaseSettings.Present >= 100000 then
+            PData.BaseSettings.Present = PData.BaseSettings.Present
+        end
+        PData.Equipment.Boot = ''
         PData.BaseSettings.Present = 100000
         PData:Update('BaseSettings', PData.BaseSettings)
         PData:Update('Equipment', PData.Equipment)
