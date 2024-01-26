@@ -1,7 +1,7 @@
 local AdminCommand = {}
 
 local Data = require(script.Parent.DataStore)
-local Full_checkPoint = 17
+local Full_checkPoint = 1
 local BootName = 'Christmas Shoes'
 
 local AdminTable = {

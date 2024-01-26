@@ -29,11 +29,14 @@ task.spawn(function()
 
 		open.Touched:Connect(function(hit)
 			if hit.Parent == player.character and PresentValue == false then
+				open.EffectOne.Enabled = true
+				open.EffectTwo.Enabled = true
+				open.CanTouch = false
 				TS:Create(open, TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = Vector3.new(0,0,0)}):Play()
 				PresentValue = true
-				--print(hit)
+				open.EffectOne.Enabled = false
+				open.EffectTwo.Enabled = false
 				Remote.Touched:FireServer(PresentValue,open)
-				open.CanTouch = false
 				task.wait(0.3)
 				PresentValue = false
 				task.wait(CoulDown)
